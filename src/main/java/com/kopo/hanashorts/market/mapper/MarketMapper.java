@@ -1,6 +1,6 @@
-package com.kopo.hanastockfit.market.mapper;
+package com.kopo.hanashorts.market.mapper;
 
-import com.kopo.hanastockfit.market.model.*;
+import com.kopo.hanashorts.market.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

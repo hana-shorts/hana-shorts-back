@@ -3,10 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.kopo.hanastockfit.market.mapper.MarketMapper">
+<mapper namespace="com.kopo.hanashorts.market.mapper.MarketMapper">
 
   <!-- 기존 currencies 쿼리 -->
-  <select id="getAllCurrencies" resultType="com.kopo.hanastockfit.market.model.CurrencyDataDTO">
+  <select id="getAllCurrencies" resultType="com.kopo.hanashorts.market.model.CurrencyDataDTO">
     SELECT
       currency_name AS currencyName,
       buy_price AS buyPrice,
@@ -20,7 +20,7 @@
   </select>
 
   <!-- currencyPeriods 쿼리 -->
-  <select id="getAllCurrencyPeriods" resultType="com.kopo.hanastockfit.market.model.CurrencyPeriodDataDTO">
+  <select id="getAllCurrencyPeriods" resultType="com.kopo.hanashorts.market.model.CurrencyPeriodDataDTO">
     SELECT
       currency_name AS currencyName,
       period_daily AS periodDaily,
@@ -33,7 +33,7 @@
   </select>
 
   <!-- commodities 쿼리 -->
-  <select id="getAllCommodities" resultType="com.kopo.hanastockfit.market.model.CommodityDataDTO">
+  <select id="getAllCommodities" resultType="com.kopo.hanashorts.market.model.CommodityDataDTO">
     SELECT
       commodity_name AS commodityName,
       contract_month AS contractMonth,
@@ -47,7 +47,7 @@
   </select>
 
   <!-- commodityPeriods 쿼리 -->
-  <select id="getAllCommodityPeriods" resultType="com.kopo.hanastockfit.market.model.CommodityPeriodDataDTO">
+  <select id="getAllCommodityPeriods" resultType="com.kopo.hanashorts.market.model.CommodityPeriodDataDTO">
     SELECT
       commodity_name AS commodityName,
       period_daily AS periodDaily,
@@ -60,7 +60,7 @@
   </select>
 
   <!-- indices 쿼리 -->
-  <select id="getAllIndices" resultType="com.kopo.hanastockfit.market.model.IndexDataDTO">
+  <select id="getAllIndices" resultType="com.kopo.hanashorts.market.model.IndexDataDTO">
     SELECT
       index_name AS indexName,
       closing_price AS closingPrice,
@@ -73,7 +73,7 @@
   </select>
 
   <!-- indexPeriods 쿼리 -->
-  <select id="getAllIndexPeriods" resultType="com.kopo.hanastockfit.market.model.IndexPeriodDataDTO">
+  <select id="getAllIndexPeriods" resultType="com.kopo.hanashorts.market.model.IndexPeriodDataDTO">
     SELECT
       index_name AS indexName,
       period_daily AS periodDaily,

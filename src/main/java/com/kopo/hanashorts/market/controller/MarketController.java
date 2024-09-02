@@ -1,7 +1,7 @@
-package com.kopo.hanastockfit.market.controller;
+package com.kopo.hanashorts.market.controller;
 
-import com.kopo.hanastockfit.market.model.*;
-import com.kopo.hanastockfit.market.service.MarketService;
+import com.kopo.hanashorts.market.model.*;
+import com.kopo.hanashorts.market.service.MarketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

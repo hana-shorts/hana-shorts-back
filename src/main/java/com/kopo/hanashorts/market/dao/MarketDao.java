@@ -1,7 +1,7 @@
-package com.kopo.hanastockfit.market.dao;
+package com.kopo.hanashorts.market.dao;
 
-import com.kopo.hanastockfit.market.mapper.MarketMapper;
-import com.kopo.hanastockfit.market.model.*;
+import com.kopo.hanashorts.market.mapper.MarketMapper;
+import com.kopo.hanashorts.market.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

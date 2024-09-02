@@ -1,4 +1,4 @@
-package com.kopo.hanastockfit.market.model;
+package com.kopo.hanashorts.market.model;
 
 import lombok.Data;
 

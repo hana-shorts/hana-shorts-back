@@ -1,10 +1,10 @@
-package com.kopo.hanastockfit.market.model;
+package com.kopo.hanashorts.market.model;
 
 import lombok.Data;
 
 @Data
-public class CommodityPeriodDataDTO {
-  private String commodityName;
+public class IndexPeriodDataDTO {
+  private String indexName;
   private String periodDaily;
   private String periodWeekly;
   private String periodMonthly;
