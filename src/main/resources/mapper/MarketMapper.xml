@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kopo.hanastockfit.market.mapper.MarketMapper">
+
+  <!-- 기존 currencies 쿼리 -->
+  <select id="getAllCurrencies" resultType="com.kopo.hanastockfit.market.model.CurrencyDataDTO">
+    SELECT
+      currency_name AS currencyName,
+      buy_price AS buyPrice,
+      sell_price AS sellPrice,
+      high_price AS highPrice,
+      low_price AS lowPrice,
+      change_value AS changeValue,
+      change_percent AS changePercent,
+      rate_time AS rateTime
+    FROM currency_data ORDER BY id
+  </select>
+
+  <!-- currencyPeriods 쿼리 -->
+  <select id="getAllCurrencyPeriods" resultType="com.kopo.hanastockfit.market.model.CurrencyPeriodDataDTO">
+    SELECT
+      currency_name AS currencyName,
+      period_daily AS periodDaily,
+      period_weekly AS periodWeekly,
+      period_monthly AS periodMonthly,
+      period_ytd AS periodYtd,
+      period_yearly AS periodYearly,
+      period_3years AS period3Years
+    FROM currency_period_data ORDER BY id
+  </select>
+
+  <!-- commodities 쿼리 -->
+  <select id="getAllCommodities" resultType="com.kopo.hanastockfit.market.model.CommodityDataDTO">
+    SELECT
+      commodity_name AS commodityName,
+      contract_month AS contractMonth,
+      closing_price AS closingPrice,
+      high_price AS highPrice,
+      low_price AS lowPrice,
+      change_value AS changeValue,
+      change_percent AS changePercent,
+      rate_time AS rateTime
+    FROM commodity_data ORDER BY id
+  </select>
+
+  <!-- commodityPeriods 쿼리 -->
+  <select id="getAllCommodityPeriods" resultType="com.kopo.hanastockfit.market.model.CommodityPeriodDataDTO">
+    SELECT
+      commodity_name AS commodityName,
+      period_daily AS periodDaily,
+      period_weekly AS periodWeekly,
+      period_monthly AS periodMonthly,
+      period_ytd AS periodYtd,
+      period_yearly AS periodYearly,
+      period_3years AS period3Years
+    FROM commodity_period_data ORDER BY id
+  </select>
+
+  <!-- indices 쿼리 -->
+  <select id="getAllIndices" resultType="com.kopo.hanastockfit.market.model.IndexDataDTO">
+    SELECT
+      index_name AS indexName,
+      closing_price AS closingPrice,
+      high_price AS highPrice,
+      low_price AS lowPrice,
+      change_value AS changeValue,
+      change_percent AS changePercent,
+      rate_time AS rateTime
+    FROM index_data ORDER BY id
+  </select>
+
+  <!-- indexPeriods 쿼리 -->
+  <select id="getAllIndexPeriods" resultType="com.kopo.hanastockfit.market.model.IndexPeriodDataDTO">
+    SELECT
+      index_name AS indexName,
+      period_daily AS periodDaily,
+      period_weekly AS periodWeekly,
+      period_monthly AS periodMonthly,
+      period_ytd AS periodYtd,
+      period_yearly AS periodYearly,
+      period_3years AS period3Years
+    FROM index_period_data ORDER BY id
+  </select>
+
+</mapper>
