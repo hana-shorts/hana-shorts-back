@@ -85,4 +85,41 @@
     FROM index_period_data ORDER BY id
   </select>
 
+  <!-- stocks 쿼리 -->
+  <select id="getAllStocks" resultType="com.kopo.hanashorts.market.model.StockDataDTO">
+    SELECT
+      stock_name AS stockName,
+      closing_price AS closingPrice,
+      high_price AS highPrice,
+      low_price AS lowPrice,
+      change_value AS changeValue,
+      change_percent AS changePercent,
+      volume AS volume,
+      rate_time AS rateTime
+    FROM
+      stock_data ORDER BY id
+  </select>
+
+  <!-- stockPeriods 쿼리 -->
+  <select id="getAllStockPeriods" resultType="com.kopo.hanashorts.market.model.StockPeriodDataDTO">
+    SELECT
+      stock_name AS stockName,
+      period_daily AS periodDaily,
+      period_weekly AS periodWeekly,
+      period_monthly AS periodMonthly,
+      period_ytd AS periodYtd,
+      period_yearly AS periodYearly,
+      period_3years AS period3Years
+    FROM stock_period_data ORDER BY id
+  </select>
+
+
+
+
+
+
+
+
+
+
 </mapper>

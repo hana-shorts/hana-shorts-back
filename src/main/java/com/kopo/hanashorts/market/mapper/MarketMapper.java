@@ -13,4 +13,6 @@ public interface MarketMapper {
   List<CommodityPeriodDataDTO> getAllCommodityPeriods();
   List<IndexDataDTO> getAllIndices();
   List<IndexPeriodDataDTO> getAllIndexPeriods();
+  List<StockDataDTO> getAllStocks();
+  List<StockPeriodDataDTO> getAllStockPeriods();
 }

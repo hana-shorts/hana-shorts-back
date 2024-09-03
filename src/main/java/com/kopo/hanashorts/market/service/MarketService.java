@@ -40,4 +40,13 @@ public class MarketService {
   public List<IndexPeriodDataDTO> getAllIndexPeriods() {
     return marketDao.getAllIndexPeriods();
   }
+
+  public List<StockDataDTO> getAllStocks() {
+    return marketDao.getAllStocks();
+  }
+
+  public List<StockPeriodDataDTO> getAllStockPeriods() {
+    return marketDao.getAllStockPeriods();
+  }
+
 }

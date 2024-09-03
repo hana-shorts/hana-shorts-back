@@ -51,4 +51,14 @@ public class MarketController {
   public List<IndexPeriodDataDTO> getAllIndexPeriods() {
     return marketService.getAllIndexPeriods();
   }
+
+  @GetMapping("/stocks")
+  public List<StockDataDTO> getAllStocks() {
+    return marketService.getAllStocks();
+  }
+
+  @GetMapping("/stockPeriods")
+  public List<StockPeriodDataDTO> getAllStockPeriods() {
+    return marketService.getAllStockPeriods();
+  }
 }
