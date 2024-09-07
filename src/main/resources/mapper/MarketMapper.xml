@@ -96,8 +96,13 @@
       change_percent AS changePercent,
       volume AS volume,
       rate_time AS rateTime
-    FROM
-      stock_data ORDER BY id
+    FROM stock_data
+    ORDER BY
+        CASE
+            WHEN volume LIKE '%K' THEN (CAST(REPLACE(volume, 'K', '') AS FLOAT) * 1000)
+            WHEN volume LIKE '%M' THEN (CAST(REPLACE(volume, 'M', '') AS FLOAT) * 1000000)
+            ELSE CAST(volume AS FLOAT)
+        END DESC
   </select>
 
   <!-- stockPeriods 쿼리 -->
