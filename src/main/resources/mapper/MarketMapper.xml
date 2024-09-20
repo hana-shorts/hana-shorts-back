@@ -15,8 +15,8 @@
       low_price AS lowPrice,
       change_value AS changeValue,
       change_percent AS changePercent,
-      rate_time AS rateTime
-    FROM currency_data ORDER BY id
+      update_time AS rateTime
+    FROM market_currency_price ORDER BY id
   </select>
 
   <!-- currencyPeriods 쿼리 -->
@@ -29,7 +29,7 @@
       period_ytd AS periodYtd,
       period_yearly AS periodYearly,
       period_3years AS period3Years
-    FROM currency_period_data ORDER BY id
+    FROM market_currency_performance ORDER BY id
   </select>
 
   <!-- commodities 쿼리 -->
@@ -42,8 +42,8 @@
       low_price AS lowPrice,
       change_value AS changeValue,
       change_percent AS changePercent,
-      rate_time AS rateTime
-    FROM commodity_data ORDER BY id
+      update_time AS rateTime
+    FROM market_commodity_price ORDER BY id
   </select>
 
   <!-- commodityPeriods 쿼리 -->
@@ -56,7 +56,7 @@
       period_ytd AS periodYtd,
       period_yearly AS periodYearly,
       period_3years AS period3Years
-    FROM commodity_period_data ORDER BY id
+    FROM market_commodity_performance ORDER BY id
   </select>
 
   <!-- indices 쿼리 -->
@@ -68,8 +68,8 @@
       low_price AS lowPrice,
       change_value AS changeValue,
       change_percent AS changePercent,
-      rate_time AS rateTime
-    FROM index_data ORDER BY id
+      update_time AS rateTime
+    FROM market_index_price ORDER BY id
   </select>
 
   <!-- indexPeriods 쿼리 -->
@@ -82,7 +82,7 @@
       period_ytd AS periodYtd,
       period_yearly AS periodYearly,
       period_3years AS period3Years
-    FROM index_period_data ORDER BY id
+    FROM market_index_performance ORDER BY id
   </select>
 
   <!-- stocks 쿼리 -->
@@ -95,8 +95,8 @@
       change_value AS changeValue,
       change_percent AS changePercent,
       volume AS volume,
-      rate_time AS rateTime
-    FROM stock_data
+      update_time AS rateTime
+    FROM market_stock_price
     ORDER BY
         CASE
             WHEN volume LIKE '%K' THEN (CAST(REPLACE(volume, 'K', '') AS FLOAT) * 1000)
@@ -115,7 +115,7 @@
       period_ytd AS periodYtd,
       period_yearly AS periodYearly,
       period_3years AS period3Years
-    FROM stock_period_data ORDER BY id
+    FROM market_stock_performance ORDER BY id
   </select>
 
 

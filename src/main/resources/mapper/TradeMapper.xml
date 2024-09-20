@@ -8,9 +8,9 @@
   <!-- 티커 코드 조회 쿼리 -->
   <select id="getTickerCodeByStockName" resultType="com.kopo.hanashorts.trade.model.StockTickersDTO">
     SELECT
-      ticker_code AS tickerCode
-    FROM stock_tickers
-    WHERE ticker_name = #{stockName}
+      stock_code AS tickerCode
+    FROM stock_item
+    WHERE stock_name = #{stockName}
   </select>
 
 
