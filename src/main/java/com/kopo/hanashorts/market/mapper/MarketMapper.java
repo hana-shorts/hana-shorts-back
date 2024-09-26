@@ -7,12 +7,14 @@ import java.util.List;
 
 @Mapper
 public interface MarketMapper {
-  List<CurrencyDataDTO> getAllCurrencies();
-  List<CurrencyPeriodDataDTO> getAllCurrencyPeriods();
-  List<CommodityDataDTO> getAllCommodities();
-  List<CommodityPeriodDataDTO> getAllCommodityPeriods();
-  List<IndexDataDTO> getAllIndices();
-  List<IndexPeriodDataDTO> getAllIndexPeriods();
-  List<StockDataDTO> getAllStocks();
-  List<StockPeriodDataDTO> getAllStockPeriods();
+  List<CurrencyPriceDTO> getAllCurrencyPrice();
+  List<CurrencyPerformanceDTO> getAllCurrencyPerformance();
+  List<CommodityPriceDTO> getAllCommodityPrice();
+  List<CommodityPerformanceDTO> getAllCommodityPerformance();
+  List<IndexPriceDTO> getAllIndexPrice();
+  List<IndexPerformanceDTO> getAllIndexPerformance();
+  List<StockPriceDTO> getAllStockKospiPrice();
+  List<StockPerformanceDTO> getAllStockKospiPerformance();
+  List<StockPriceDTO> getAllStockKosdaqPrice();
+  List<StockPerformanceDTO> getAllStockKosdaqPerformance();
 }

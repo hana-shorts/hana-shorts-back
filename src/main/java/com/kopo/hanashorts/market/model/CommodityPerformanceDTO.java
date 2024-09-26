@@ -3,7 +3,7 @@ package com.kopo.hanashorts.market.model;
 import lombok.Data;
 
 @Data
-public class CommodityPeriodDataDTO {
+public class CommodityPerformanceDTO {
   private String commodityName;
   private String periodDaily;
   private String periodWeekly;

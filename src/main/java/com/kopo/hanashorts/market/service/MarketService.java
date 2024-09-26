@@ -4,6 +4,7 @@ import com.kopo.hanashorts.market.dao.MarketDao;
 import com.kopo.hanashorts.market.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -17,36 +18,44 @@ public class MarketService {
     this.marketDao = marketDao;
   }
 
-  public List<CurrencyDataDTO> getAllCurrencies() {
-    return marketDao.getAllCurrencies();
+  public List<CurrencyPriceDTO> getAllCurrencyPrice() {
+    return marketDao.getAllCurrencyPrice();
   }
 
-  public List<CurrencyPeriodDataDTO> getAllCurrencyPeriods() {
-    return marketDao.getAllCurrencyPeriods();
+  public List<CurrencyPerformanceDTO> getAllCurrencyPerformance() {
+    return marketDao.getAllCurrencyPerformance();
   }
 
-  public List<CommodityDataDTO> getAllCommodities() {
-    return marketDao.getAllCommodities();
+  public List<CommodityPriceDTO> getAllCommodityPrice() {
+    return marketDao.getAllCommodityPrice();
   }
 
-  public List<CommodityPeriodDataDTO> getAllCommodityPeriods() {
-    return marketDao.getAllCommodityPeriods();
+  public List<CommodityPerformanceDTO> getAllCommodityPerformance() {
+    return marketDao.getAllCommodityPerformance();
   }
 
-  public List<IndexDataDTO> getAllIndices() {
-    return marketDao.getAllIndices();
+  public List<IndexPriceDTO> getAllIndexPrice() {
+    return marketDao.getAllIndexPrice();
   }
 
-  public List<IndexPeriodDataDTO> getAllIndexPeriods() {
-    return marketDao.getAllIndexPeriods();
+  public List<IndexPerformanceDTO> getAllIndexPerformance() {
+    return marketDao.getAllIndexPerformance();
   }
 
-  public List<StockDataDTO> getAllStocks() {
-    return marketDao.getAllStocks();
+  public List<StockPriceDTO> getAllStockKospiPrice() {
+    return marketDao.getAllStockKospiPrice();
   }
 
-  public List<StockPeriodDataDTO> getAllStockPeriods() {
-    return marketDao.getAllStockPeriods();
+  public List<StockPerformanceDTO> getAllStockKospiPerformance() {
+    return marketDao.getAllStockKospiPerformance();
+  }
+
+  public List<StockPriceDTO> getAllStockKosdaqPrice() {
+    return marketDao.getAllStockKosdaqPrice();
+  }
+
+  public List<StockPerformanceDTO> getAllStockKosdaqPerformance() {
+    return marketDao.getAllStockKosdaqPerformance();
   }
 
 }

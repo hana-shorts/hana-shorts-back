@@ -3,9 +3,10 @@ package com.kopo.hanashorts.market.model;
 import lombok.Data;
 
 @Data
-public class IndexDataDTO {
-  private String indexName;
-  private String closingPrice;
+public class CurrencyPriceDTO {
+  private String currencyName; // VARCHAR2 -> String
+  private String buyPrice;
+  private String sellPrice;
   private String highPrice;
   private String lowPrice;
   private String changeValue;

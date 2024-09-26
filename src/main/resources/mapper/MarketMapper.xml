@@ -6,7 +6,7 @@
 <mapper namespace="com.kopo.hanashorts.market.mapper.MarketMapper">
 
   <!-- 기존 currencies 쿼리 -->
-  <select id="getAllCurrencies" resultType="com.kopo.hanashorts.market.model.CurrencyDataDTO">
+  <select id="getAllCurrencyPrice" resultType="com.kopo.hanashorts.market.model.CurrencyPriceDTO">
     SELECT
       currency_name AS currencyName,
       buy_price AS buyPrice,
@@ -20,7 +20,7 @@
   </select>
 
   <!-- currencyPeriods 쿼리 -->
-  <select id="getAllCurrencyPeriods" resultType="com.kopo.hanashorts.market.model.CurrencyPeriodDataDTO">
+  <select id="getAllCurrencyPerformance" resultType="com.kopo.hanashorts.market.model.CurrencyPerformanceDTO">
     SELECT
       currency_name AS currencyName,
       period_daily AS periodDaily,
@@ -33,7 +33,7 @@
   </select>
 
   <!-- commodities 쿼리 -->
-  <select id="getAllCommodities" resultType="com.kopo.hanashorts.market.model.CommodityDataDTO">
+  <select id="getAllCommodityPrice" resultType="com.kopo.hanashorts.market.model.CommodityPriceDTO">
     SELECT
       commodity_name AS commodityName,
       contract_month AS contractMonth,
@@ -47,7 +47,7 @@
   </select>
 
   <!-- commodityPeriods 쿼리 -->
-  <select id="getAllCommodityPeriods" resultType="com.kopo.hanashorts.market.model.CommodityPeriodDataDTO">
+  <select id="getAllCommodityPerformance" resultType="com.kopo.hanashorts.market.model.CommodityPerformanceDTO">
     SELECT
       commodity_name AS commodityName,
       period_daily AS periodDaily,
@@ -60,7 +60,7 @@
   </select>
 
   <!-- indices 쿼리 -->
-  <select id="getAllIndices" resultType="com.kopo.hanashorts.market.model.IndexDataDTO">
+  <select id="getAllIndexPrice" resultType="com.kopo.hanashorts.market.model.IndexPriceDTO">
     SELECT
       index_name AS indexName,
       closing_price AS closingPrice,
@@ -73,7 +73,7 @@
   </select>
 
   <!-- indexPeriods 쿼리 -->
-  <select id="getAllIndexPeriods" resultType="com.kopo.hanashorts.market.model.IndexPeriodDataDTO">
+  <select id="getAllIndexPerformance" resultType="com.kopo.hanashorts.market.model.IndexPerformanceDTO">
     SELECT
       index_name AS indexName,
       period_daily AS periodDaily,
@@ -86,7 +86,7 @@
   </select>
 
   <!-- stocks 쿼리 -->
-  <select id="getAllStocks" resultType="com.kopo.hanashorts.market.model.StockDataDTO">
+  <select id="getAllStockKospiPrice" resultType="com.kopo.hanashorts.market.model.StockPriceDTO">
     SELECT
       stock_name AS stockName,
       closing_price AS closingPrice,
@@ -96,7 +96,7 @@
       change_percent AS changePercent,
       volume AS volume,
       update_time AS rateTime
-    FROM market_stock_price
+    FROM market_stock_kospi_price
     ORDER BY
         CASE
             WHEN volume LIKE '%K' THEN (CAST(REPLACE(volume, 'K', '') AS FLOAT) * 1000)
@@ -106,7 +106,7 @@
   </select>
 
   <!-- stockPeriods 쿼리 -->
-  <select id="getAllStockPeriods" resultType="com.kopo.hanashorts.market.model.StockPeriodDataDTO">
+  <select id="getAllStockKospiPerformance" resultType="com.kopo.hanashorts.market.model.StockPerformanceDTO">
     SELECT
       stock_name AS stockName,
       period_daily AS periodDaily,
@@ -115,10 +115,41 @@
       period_ytd AS periodYtd,
       period_yearly AS periodYearly,
       period_3years AS period3Years
-    FROM market_stock_performance ORDER BY id
+    FROM market_stock_kospi_performance ORDER BY id
   </select>
 
+  <!-- stocks 쿼리 -->
+  <select id="getAllStockKosdaqPrice" resultType="com.kopo.hanashorts.market.model.StockPriceDTO">
+    SELECT
+      stock_name AS stockName,
+      closing_price AS closingPrice,
+      high_price AS highPrice,
+      low_price AS lowPrice,
+      change_value AS changeValue,
+      change_percent AS changePercent,
+      volume AS volume,
+      update_time AS rateTime
+    FROM market_stock_kosdaq_price
+    ORDER BY
+      CASE
+        WHEN volume LIKE '%K' THEN (CAST(REPLACE(volume, 'K', '') AS FLOAT) * 1000)
+        WHEN volume LIKE '%M' THEN (CAST(REPLACE(volume, 'M', '') AS FLOAT) * 1000000)
+        ELSE CAST(volume AS FLOAT)
+        END DESC
+  </select>
 
+  <!-- stockPeriods 쿼리 -->
+  <select id="getAllStockKosdaqPerformance" resultType="com.kopo.hanashorts.market.model.StockPerformanceDTO">
+    SELECT
+      stock_name AS stockName,
+      period_daily AS periodDaily,
+      period_weekly AS periodWeekly,
+      period_monthly AS periodMonthly,
+      period_ytd AS periodYtd,
+      period_yearly AS periodYearly,
+      period_3years AS period3Years
+    FROM market_stock_kosdaq_performance ORDER BY id
+  </select>
 
 
 

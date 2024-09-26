@@ -17,36 +17,44 @@ public class MarketDao {
     this.marketMapper = marketMapper;
   }
 
-  public List<CurrencyDataDTO> getAllCurrencies() {
-    return marketMapper.getAllCurrencies();
+  public List<CurrencyPriceDTO> getAllCurrencyPrice() {
+    return marketMapper.getAllCurrencyPrice();
   }
 
-  public List<CurrencyPeriodDataDTO> getAllCurrencyPeriods() {
-    return marketMapper.getAllCurrencyPeriods();
+  public List<CurrencyPerformanceDTO> getAllCurrencyPerformance() {
+    return marketMapper.getAllCurrencyPerformance();
   }
 
-  public List<CommodityDataDTO> getAllCommodities() {
-    return marketMapper.getAllCommodities();
+  public List<CommodityPriceDTO> getAllCommodityPrice() {
+    return marketMapper.getAllCommodityPrice();
   }
 
-  public List<CommodityPeriodDataDTO> getAllCommodityPeriods() {
-    return marketMapper.getAllCommodityPeriods();
+  public List<CommodityPerformanceDTO> getAllCommodityPerformance() {
+    return marketMapper.getAllCommodityPerformance();
   }
 
-  public List<IndexDataDTO> getAllIndices() {
-    return marketMapper.getAllIndices();
+  public List<IndexPriceDTO> getAllIndexPrice() {
+    return marketMapper.getAllIndexPrice();
   }
 
-  public List<IndexPeriodDataDTO> getAllIndexPeriods() {
-    return marketMapper.getAllIndexPeriods();
+  public List<IndexPerformanceDTO> getAllIndexPerformance() {
+    return marketMapper.getAllIndexPerformance();
   }
 
-  public List<StockDataDTO> getAllStocks() {
-    return marketMapper.getAllStocks();
+  public List<StockPriceDTO> getAllStockKospiPrice() {
+    return marketMapper.getAllStockKospiPrice();
   }
 
-  public List<StockPeriodDataDTO> getAllStockPeriods() {
-    return marketMapper.getAllStockPeriods();
+  public List<StockPerformanceDTO> getAllStockKospiPerformance() {
+    return marketMapper.getAllStockKospiPerformance();
+  }
+
+  public List<StockPriceDTO> getAllStockKosdaqPrice() {
+    return marketMapper.getAllStockKosdaqPrice();
+  }
+
+  public List<StockPerformanceDTO> getAllStockKosdaqPerformance() {
+    return marketMapper.getAllStockKosdaqPerformance();
   }
 
 }

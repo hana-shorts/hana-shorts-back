@@ -22,43 +22,53 @@ public class MarketController {
     this.marketService = marketService;
   }
 
-  @GetMapping("/currencies")
-  public List<CurrencyDataDTO> getAllCurrencies() {
-    return marketService.getAllCurrencies();
+  @GetMapping("/currencyPrice")
+  public List<CurrencyPriceDTO> getAllCurrencyPrice() {
+    return marketService.getAllCurrencyPrice();
   }
 
-  @GetMapping("/currencyPeriods")
-  public List<CurrencyPeriodDataDTO> getAllCurrencyPeriods() {
-    return marketService.getAllCurrencyPeriods();
+  @GetMapping("/currencyPerformance")
+  public List<CurrencyPerformanceDTO> getAllCurrencyPerformance() {
+    return marketService.getAllCurrencyPerformance();
   }
 
-  @GetMapping("/commodities")
-  public List<CommodityDataDTO> getAllCommodities() {
-    return marketService.getAllCommodities();
+  @GetMapping("/commodityPrice")
+  public List<CommodityPriceDTO> getAllCommodityPrice() {
+    return marketService.getAllCommodityPrice();
   }
 
-  @GetMapping("/commodityPeriods")
-  public List<CommodityPeriodDataDTO> getAllCommodityPeriods() {
-    return marketService.getAllCommodityPeriods();
+  @GetMapping("/commodityPerformance")
+  public List<CommodityPerformanceDTO> getAllCommodityPerformance() {
+    return marketService.getAllCommodityPerformance();
   }
 
-  @GetMapping("/indices")
-  public List<IndexDataDTO> getAllIndices() {
-    return marketService.getAllIndices();
+  @GetMapping("/indexPrice")
+  public List<IndexPriceDTO> getAllIndexPrice() {
+    return marketService.getAllIndexPrice();
   }
 
-  @GetMapping("/indexPeriods")
-  public List<IndexPeriodDataDTO> getAllIndexPeriods() {
-    return marketService.getAllIndexPeriods();
+  @GetMapping("/indexPerformance")
+  public List<IndexPerformanceDTO> getAllIndexPerformance() {
+    return marketService.getAllIndexPerformance();
   }
 
-  @GetMapping("/stocks")
-  public List<StockDataDTO> getAllStocks() {
-    return marketService.getAllStocks();
+  @GetMapping("/stockKospiPrice")
+  public List<StockPriceDTO> getAllStockKospiPrice() {
+    return marketService.getAllStockKospiPrice();
   }
 
-  @GetMapping("/stockPeriods")
-  public List<StockPeriodDataDTO> getAllStockPeriods() {
-    return marketService.getAllStockPeriods();
+  @GetMapping("/stockKospiPerformance")
+  public List<StockPerformanceDTO> getAllStockKospiPerformance() {
+    return marketService.getAllStockKospiPerformance();
+  }
+
+  @GetMapping("/stockKosdaqPrice")
+  public List<StockPriceDTO> getAllStockKosdaqPrice() {
+    return marketService.getAllStockKosdaqPrice();
+  }
+
+  @GetMapping("/stockKosdaqPerformance")
+  public List<StockPerformanceDTO> getAllStockKosdaqPerformance() {
+    return marketService.getAllStockKosdaqPerformance();
   }
 }
