@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kopo.hanashorts.user.mapper.UserMapper">
+
+  <!-- 사용자 ID로 사용자 정보 조회 -->
+  <select id="findByUserId" parameterType="String" resultType="com.kopo.hanashorts.user.model.UserDTO">
+    SELECT
+      user_id AS userId,
+      password,
+      name,
+      ssn_1 AS ssn1,
+      ssn_2 AS ssn2,
+      email,
+      phone_number AS phoneNumber,
+      signup_date AS signupDate,
+      last_login AS lastLogin
+    FROM TRADE_USER
+    WHERE user_id = #{userId}
+  </select>
+
+  <!-- 사용자 등록 -->
+  <insert id="insertUser" parameterType="com.kopo.hanashorts.user.model.UserDTO">
+    INSERT INTO TRADE_USER (
+      user_id, password, name, ssn_1, ssn_2, email, phone_number, signup_date, last_login
+    )
+    VALUES (
+             #{userId}, #{password}, #{name}, #{ssn1}, #{ssn2}, #{email}, #{phoneNumber}, SYSDATE, SYSDATE
+           )
+  </insert>
+
+</mapper>
