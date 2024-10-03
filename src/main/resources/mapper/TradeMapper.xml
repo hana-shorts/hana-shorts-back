@@ -13,5 +13,75 @@
     WHERE stock_name = #{stockName}
   </select>
 
+  <!-- ORDER_HISTORY 삽입 쿼리 -->
+  <insert id="insertOrderHistory">
+    INSERT INTO ORDER_HISTORY (
+      account_number, stock_code, order_date, order_time, trade_type, quantity, price, loan_date, maturity_date
+    ) VALUES (
+               '39756818-010',
+               #{stock_code},
+               SYSDATE,
+               SYSTIMESTAMP,
+               #{trade_type},
+               #{quantity},
+               #{price},
+               SYSDATE + 2,
+               SYSDATE + 90
+             )
+  </insert>
+
+  <!-- TRANSACTION_HISTORY 삽입 쿼리 -->
+  <insert id="insertTransactionHistory">
+    INSERT INTO TRANSACTION_HISTORY (
+      account_number, stock_code, transaction_date, transaction_time, trade_type, quantity, price, loan_date, maturity_date
+    ) VALUES (
+               '39756818-010',
+               #{stock_code},
+               SYSDATE,
+               SYSTIMESTAMP,
+               #{trade_type},
+               #{quantity},
+               #{price},
+               SYSDATE + 2,
+               SYSDATE + 90
+             )
+  </insert>
+
+  <!-- TRANSACTION_HISTORY 조회 쿼리 -->
+  <select id="getTransactionHistory" resultType="com.kopo.hanashorts.trade.model.TransactionHistoryDTO">
+    SELECT
+      transaction_id,
+      account_number,
+      stock_code,
+      transaction_date,
+      transaction_time,
+      trade_type,
+      quantity,
+      price,
+      loan_date,
+      maturity_date
+    FROM TRANSACTION_HISTORY
+  </select>
+
+  <!-- 신용 주문 내역 조회 쿼리 with stock_name -->
+  <select id="getCreditOrderHistory" resultType="com.kopo.hanashorts.trade.model.OrderHistoryDTO">
+    SELECT
+      oh.order_id,
+      oh.account_number,
+      oh.stock_code,
+      si.stock_name, -- stock_name 추가
+      oh.order_date,
+      oh.order_time,
+      oh.trade_type,
+      oh.quantity,
+      oh.price,
+      oh.loan_date,
+      oh.maturity_date
+    FROM ORDER_HISTORY oh
+           JOIN stock_item si ON oh.stock_code = si.stock_code
+    WHERE oh.trade_type = '유통대주신규'
+  </select>
+
+
 
 </mapper>
