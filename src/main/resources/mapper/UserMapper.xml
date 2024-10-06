@@ -5,7 +5,7 @@
 
 <mapper namespace="com.kopo.hanashorts.user.mapper.UserMapper">
 
-  <!-- 사용자 ID로 사용자 정보 조회 -->
+  <!-- Update the SELECT query -->
   <select id="findByUserId" parameterType="String" resultType="com.kopo.hanashorts.user.model.UserDTO">
     SELECT
       user_id AS userId,
@@ -16,19 +16,61 @@
       email,
       phone_number AS phoneNumber,
       signup_date AS signupDate,
-      last_login AS lastLogin
+      last_login AS lastLogin,
+      preliminary_education_completed AS preliminaryEducationCompleted,
+      preliminary_education_date AS preliminaryEducationDate,
+      mock_trading_completed AS mockTradingCompleted,
+      mock_trading_date AS mockTradingDate
     FROM TRADE_USER
     WHERE user_id = #{userId}
   </select>
 
-  <!-- 사용자 등록 -->
+  <!-- Update the INSERT query -->
   <insert id="insertUser" parameterType="com.kopo.hanashorts.user.model.UserDTO">
     INSERT INTO TRADE_USER (
-      user_id, password, name, ssn_1, ssn_2, email, phone_number, signup_date, last_login
+      user_id, password, name, ssn_1, ssn_2, email, phone_number, signup_date, last_login,
+      preliminary_education_completed, preliminary_education_date, mock_trading_completed, mock_trading_date
     )
     VALUES (
-             #{userId}, #{password}, #{name}, #{ssn1}, #{ssn2}, #{email}, #{phoneNumber}, SYSDATE, SYSDATE
+             #{userId}, #{password}, #{name}, #{ssn1}, #{ssn2}, #{email}, #{phoneNumber}, SYSDATE, SYSDATE,
+             #{preliminaryEducationCompleted}, #{preliminaryEducationDate}, #{mockTradingCompleted}, #{mockTradingDate}
            )
   </insert>
+
+  <!-- Add UPDATE queries for preliminary education and mock trading -->
+  <update id="updatePreliminaryEducation" parameterType="com.kopo.hanashorts.user.model.UserDTO">
+    UPDATE TRADE_USER
+    SET preliminary_education_completed = #{preliminaryEducationCompleted},
+        preliminary_education_date = #{preliminaryEducationDate}
+    WHERE user_id = #{userId}
+  </update>
+
+  <update id="updateMockTrading" parameterType="com.kopo.hanashorts.user.model.UserDTO">
+    UPDATE TRADE_USER
+    SET mock_trading_completed = #{mockTradingCompleted},
+        mock_trading_date = #{mockTradingDate}
+    WHERE user_id = #{userId}
+  </update>
+
+
+  <!-- 모의거래 이수 여부 확인 쿼리 -->
+  <select id="countMockTrading" resultType="int">
+    SELECT COUNT(*)
+    FROM mock_trading
+    WHERE user_id = #{userId, jdbcType=VARCHAR}
+      AND authentication_key = #{authenticationKey, jdbcType=VARCHAR}
+  </select>
+
+  <!-- 사전교육 이수 여부 확인 쿼리 -->
+  <select id="countPreliminaryEducation" resultType="int">
+    SELECT COUNT(*)
+    FROM short_selling_education
+    WHERE user_id = #{userId, jdbcType=VARCHAR}
+      AND completion_number = #{completionNumber, jdbcType=VARCHAR}
+  </select>
+
+
+
+
 
 </mapper>

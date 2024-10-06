@@ -15,4 +15,11 @@ public class UserDTO {
   private String phoneNumber;
   private Date signupDate;
   private Date lastLogin;
+
+  // New fields
+  private String preliminaryEducationCompleted;
+  private Date preliminaryEducationDate;
+  private String mockTradingCompleted;
+  private Date mockTradingDate;
 }
+

@@ -5,6 +5,8 @@ import com.kopo.hanashorts.user.model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class UserService {
 
@@ -36,4 +38,44 @@ public class UserService {
   public void register(UserDTO user) {
     userDao.save(user);
   }
+
+  public void updatePreliminaryEducation(UserDTO user) {
+    userDao.updatePreliminaryEducation(user);
+  }
+
+  public void updateMockTrading(UserDTO user) {
+    userDao.updateMockTrading(user);
+  }
+
+
+  public boolean registerPreliminaryEducation(String userId, String completionNumber) {
+    // 외부 시스템 테이블에서 확인
+    boolean exists = userDao.verifyPreliminaryEducation(userId, completionNumber);
+    if (exists) {
+      // 사용자 정보 업데이트
+      UserDTO user = new UserDTO();
+      user.setUserId(userId);
+      user.setPreliminaryEducationCompleted("YES");
+      user.setPreliminaryEducationDate(new Date());
+      userDao.updatePreliminaryEducation(user);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean registerMockTrading(String userId, String authenticationKey) {
+    // 외부 시스템 테이블에서 확인
+    boolean exists = userDao.verifyMockTrading(userId, authenticationKey);
+    if (exists) {
+      // 사용자 정보 업데이트
+      UserDTO user = new UserDTO();
+      user.setUserId(userId);
+      user.setMockTradingCompleted("YES");
+      user.setMockTradingDate(new Date());
+      userDao.updateMockTrading(user);
+      return true;
+    }
+    return false;
+  }
+
 }

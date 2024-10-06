@@ -6,9 +6,13 @@ import com.kopo.hanashorts.user.dto.RegisterRequest;
 import com.kopo.hanashorts.user.model.UserDTO;
 import com.kopo.hanashorts.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
+
+import java.util.Date;
+import java.util.Map;
 
 
 @RestController
@@ -118,6 +122,44 @@ public class UserController {
       response.setMessage("회원가입 실패");
       response.setUser(null);
       return ResponseEntity.ok(response);
+    }
+  }
+
+  @PostMapping("/registerPreliminaryEducation")
+  public ResponseEntity<?> registerPreliminaryEducation(
+          @RequestBody Map<String, String> requestData, HttpSession session) {
+
+    UserDTO user = (UserDTO) session.getAttribute("user");
+    if (user != null) {
+      String completionNumber = requestData.get("completionNumber");
+      boolean success = userService.registerPreliminaryEducation(user.getUserId(), completionNumber);
+      if (success) {
+        return ResponseEntity.ok("사전교육 이수가 등록되었습니다.");
+      } else {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("사전교육 이수 정보가 올바르지 않습니다.");
+      }
+    } else {
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("사용자가 로그인되어 있지 않습니다.");
+    }
+  }
+
+  @PostMapping("/registerMockTrading")
+  public ResponseEntity<?> registerMockTrading(
+          @RequestBody Map<String, String> requestData, HttpSession session) {
+
+    UserDTO user = (UserDTO) session.getAttribute("user");
+    if (user != null) {
+      String authenticationKey = requestData.get("authenticationKey");
+      String userId = requestData.get("userId");
+      System.out.println("Received authenticationKey: " + authenticationKey); // 로그 추가
+      boolean success = userService.registerMockTrading(userId, authenticationKey);
+      if (success) {
+        return ResponseEntity.ok("모의거래 이수가 등록되었습니다.");
+      } else {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("모의거래 이수 정보가 올바르지 않습니다.");
+      }
+    } else {
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("사용자가 로그인되어 있지 않습니다.");
     }
   }
 }
